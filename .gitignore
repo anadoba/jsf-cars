@@ -4,15 +4,18 @@ syntax: glob
 *~
 *.bak
 *.old
+*.pdf
 
 # logs
 *.log
 
-# eclipse conf file
+# Eclipse
 .settings
 .settings/
-#.classpath
-#.project
+.classpath
+.project
+.springBeans
+
 
 # building
 target
@@ -24,3 +27,17 @@ test-output
 .svn
 .CVS
 .hg*
+
+# Idea
+.idea/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
+
+# switch to regexp syntax.
+#  syntax: regexp
+#  ^\.pc/
+

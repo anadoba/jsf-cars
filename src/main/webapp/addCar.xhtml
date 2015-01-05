@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="/templates/default.xhtml">
+    <ui:define name="content">
+        <h:form id="carForm">
+            <h:panelGrid columns="2">
+
+                <h:outputText value="#{msg.carModelLabel}" />
+                <h:inputText id="model" value="#{carBean.car.model}" />
+
+                <h:outputText value="#{msg.carHorsepowerLabel}" />
+                <h:inputText id="horsepower" value="#{carBean.car.horsepower}" />
+
+                <h:outputText value="#{msg.carLicensePlatesLabel}" />
+                <h:inputText id="licensePlates" value="#{carBean.car.licensePlates}" />
+
+                <h:outputText value="#{msg.carProductionDateLabel}" />
+                <rich:calendar value="#{carBean.car.productionDate}"
+                               id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
+                               cellWidth="24px" cellHeight="22px" style="width:200px">
+                </rich:calendar>
+
+            </h:panelGrid>
+
+            <h:commandButton value="#{msg.personFormOKButton}"
+                             action="#{carBean.addCar}" />
+
+            <h:panelGrid>
+                <h:messages showDetail="#{true}" showSummary="#{false}" />
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>

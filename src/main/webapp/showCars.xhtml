@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="/templates/default.xhtml">
+
+    <ui:define name="content">
+
+        <h:form>
+
+            <h:dataTable value="#{carBean.allCars}" var="item">
+                <f:facet name="header">#{msg.carAllLabel}</f:facet>
+
+                <h:column>
+                    <f:facet name="header">#{msg.carModelLabel}</f:facet>
+                    #{item.model}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.carHorsepowerLabel}</f:facet>
+                    #{item.horsepower}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.carLicensePlatesLabel}</f:facet>
+                    #{item.licensePlates}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.carProductionDateLabel}</f:facet>
+                    #{item.productionDate}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">#{msg.action}</f:facet>
+                    <h:commandLink value="#{msg.actionDelete}" action="#{carBean.deleteCar}"/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

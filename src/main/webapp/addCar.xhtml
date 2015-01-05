@@ -19,6 +19,10 @@
                 <h:outputText value="#{msg.carLicensePlatesLabel}" />
                 <h:inputText id="licensePlates" value="#{carBean.car.licensePlates}" />
 
+                <h:outputText value="#{msg.carOwnersAmountLabel}" />
+                <rich:inputNumberSpinner id="ownersAmount" value="#{carBean.car.ownersAmount}">
+                </rich:inputNumberSpinner>
+
                 <h:outputText value="#{msg.carProductionDateLabel}" />
                 <rich:calendar value="#{carBean.car.productionDate}"
                                id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"

@@ -11,8 +11,9 @@
 
         <h:form>
 
-            <h:dataTable value="#{carBean.allCars}" var="item">
-                <f:facet name="header">#{msg.carAllLabel}</f:facet>
+            <f:facet name="header">#{msg.carAllLabel}</f:facet>
+
+            <h:dataTable class ="table table-striped" value="#{carBean.allCars}" var="item">
 
                 <h:column>
                     <f:facet name="header">#{msg.carModelLabel}</f:facet>
@@ -30,13 +31,18 @@
                 </h:column>
 
                 <h:column>
+                    <f:facet name="header">#{msg.carOwnersAmountLabel}</f:facet>
+                    #{item.ownersAmount}
+                </h:column>
+
+                <h:column>
                     <f:facet name="header">#{msg.carProductionDateLabel}</f:facet>
                     #{item.productionDate}
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">#{msg.action}</f:facet>
-                    <h:commandLink value="#{msg.actionDelete}" action="#{carBean.deleteCar}"/>
+                    <h:commandLink class="button btn-danger" value="#{msg.actionDelete}" action="#{carBean.deleteCar}"/>
                 </h:column>
 
             </h:dataTable>

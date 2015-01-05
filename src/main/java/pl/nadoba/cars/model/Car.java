@@ -14,6 +14,7 @@ public class Car {
     private int horsepower = 0;
     private Date productionDate = new Date();
     private String licensePlates = "";
+    private int ownersAmount = 0;
 
     public UUID getUuid() {
         return uuid;
@@ -49,5 +50,13 @@ public class Car {
     }
     public void setLicensePlates(String licensePlates) {
         this.licensePlates = licensePlates;
+    }
+
+
+    public int getOwnersAmount() {
+        return ownersAmount;
+    }
+    public void setOwnersAmount(int ownersAmount) {
+        this.ownersAmount = ownersAmount;
     }
 }

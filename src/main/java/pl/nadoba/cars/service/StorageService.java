@@ -30,15 +30,16 @@ public class StorageService {
 
     private List<Car> cars = new ArrayList<Car>();
 
-    public void addCar(Car _car) {
-        Car car = new Car();
+    public void addCar(Car car) {
+        Car carToAdd = new Car();
 
-        car.setModel(_car.getModel());
-        car.setHorsepower(_car.getHorsepower());
-        car.setLicensePlates(_car.getLicensePlates());
-        car.setProductionDate(_car.getProductionDate());
+        carToAdd.setModel(car.getModel());
+        carToAdd.setHorsepower(car.getHorsepower());
+        carToAdd.setLicensePlates(car.getLicensePlates());
+        carToAdd.setProductionDate(car.getProductionDate());
+        carToAdd.setOwnersAmount(car.getOwnersAmount());
 
-        cars.add(car);
+        cars.add(carToAdd);
     }
 
     public void removeCar(Car car) {

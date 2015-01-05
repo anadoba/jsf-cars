@@ -5,22 +5,15 @@
 	xmlns:h="http://java.sun.com/jsf/html">
   <div>
 	<h:form>
-	  <ul>
-		<li>
-		  <h:commandLink action="home?faces-redirect=true">
-			<h:outputText value="#{msg.linkHome}" />
-		  </h:commandLink>
-		</li>
-		<li>
-		  <h:commandLink action="addCar?faces-redirect=true">
-			<h:outputText value="#{msg.carAddLabel}" />
-		  </h:commandLink></li>
-		<li>
-		  <h:commandLink action="showCars?faces-redirect=true">
-			 <h:outputText value="#{msg.carAllLabel}" />
-		  </h:commandLink>
-		</li>
-	</ul>
+      <h:commandLink class="btn btn-success" action="home?faces-redirect=true" style="margin-left:64px">
+        <h:outputText value="#{msg.linkHome}" />
+      </h:commandLink>
+      <h:commandLink class="btn btn-success" action="addCar?faces-redirect=true" style="margin-left:64px">
+        <h:outputText value="#{msg.carAddLabel}" />
+      </h:commandLink>
+      <h:commandLink class="btn btn-success" action="showCars?faces-redirect=true" style="margin-left:64px">
+         <h:outputText value="#{msg.carAllLabel}" />
+      </h:commandLink>
    </h:form>
   </div>
 </ui:composition>

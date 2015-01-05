@@ -5,15 +5,20 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title><ui:insert name="windowTitle">#{msg.mainWindowTitle}</ui:insert>
-	</title>
+	<h1 align="center">
+        <ui:insert name="windowTitle">#{msg.mainWindowTitle}</ui:insert>
+	</h1>
+    <link href="resources/css/bootstrap.css" rel="stylesheet"/>
+    <link href="resources/css/bootstrap-theme.css" rel="stylesheet"/>
 </h:head>
 <h:body>
-  <h:outputStylesheet library="css" name="default.css" target="body" />
-	<div class="heading">
-	  <ui:insert name="heading">
-       #{msg.mainHeading}
-     </ui:insert>
+  <h:outputStylesheet library="css" name="bootstrap.css" target="body" />
+	<div class="alert alert-success">
+	  <strong>
+        <ui:insert name="page-header">
+            #{msg.mainHeading}
+        </ui:insert>
+      </strong>
     </div>
 	<div class="menuAndContent">
 	 <div class="menu">
@@ -21,7 +26,10 @@
          <ui:include src="/views/main/menu.xhtml" />
        </ui:insert>
       </div>
-	  <div class="content">
+       <br/>
+    <div class="alert alert-success">
+    </div>
+	  <div class="content" style="margin-left:64px">
 	     <ui:insert name="content" />
        </div>
 	</div>

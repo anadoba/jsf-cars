@@ -8,6 +8,20 @@
 	<h1 align="center">
         <ui:insert name="windowTitle">#{msg.mainWindowTitle}</ui:insert>
 	</h1>
+    <h2 align="center" id="czas" class="czas">
+    </h2>
+    <script type="text/javascript">
+			function getTime()
+			{
+				return (new Date()).toLocaleTimeString();
+			}
+
+			document.getElementById('czas').innerHTML = getTime();
+
+			setInterval(function() {
+				document.getElementById('czas').innerHTML = getTime();
+			}, 1000);
+    </script>
     <link href="resources/css/bootstrap.css" rel="stylesheet"/>
     <link href="resources/css/bootstrap-theme.css" rel="stylesheet"/>
 </h:head>

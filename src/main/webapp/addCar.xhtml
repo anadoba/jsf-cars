@@ -25,6 +25,7 @@
                 <h:inputText id="licensePlates" value="#{carBean.car.licensePlates}"
                              validator="#{carBean.uniqueLicensePlates}">
                     <a4j:ajax render="licensePlates" execute="@this" />
+                    <f:validateLength minimum="7" maximum="9" />
                 </h:inputText>
 
                 <h:outputText value="#{msg.carOwnersAmountLabel}" />

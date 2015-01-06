@@ -11,30 +11,68 @@
             <h:panelGrid columns="2">
 
                 <h:outputText value="#{msg.carModelLabel}" />
-                <h:inputText id="model" value="#{carBean.car.model}" />
+                <h:inputText id="model" value="#{carBean.car.model}">
+                    <a4j:ajax render="model" execute="@this" />
+                </h:inputText>
 
                 <h:outputText value="#{msg.carHorsepowerLabel}" />
                 <h:inputText id="horsepower" value="#{carBean.car.horsepower}" >
                     <f:validator validatorId="horsepowerValidator" />
+                    <a4j:ajax render="horsepower" execute="@this" />
                 </h:inputText>
 
                 <h:outputText value="#{msg.carLicensePlatesLabel}" />
                 <h:inputText id="licensePlates" value="#{carBean.car.licensePlates}"
-                             validator="#{carBean.uniqueLicensePlates}"/>
+                             validator="#{carBean.uniqueLicensePlates}">
+                    <a4j:ajax render="licensePlates" execute="@this" />
+                </h:inputText>
 
                 <h:outputText value="#{msg.carOwnersAmountLabel}" />
                 <rich:inputNumberSpinner id="ownersAmount" value="#{carBean.car.ownersAmount}">
+                    <a4j:ajax render="ownersAmount" execute="@this" />
                 </rich:inputNumberSpinner>
 
                 <h:outputText value="#{msg.carProductionDateLabel}" />
                 <rich:calendar value="#{carBean.car.productionDate}"
                                id="calendar" datePattern="dd.MM.yyyy" showApplyButton="#{true}"
                                cellWidth="24px" cellHeight="22px" style="width:200px">
+                    <a4j:ajax render="productionDate" execute="@this" />
                 </rich:calendar>
 
             </h:panelGrid>
 
-            <h:commandButton value="#{msg.personFormOKButton}"
+            <br/>
+            <div class="well">
+                <p></p>
+            </div>
+
+            <a4j:outputPanel ajaxRendered="true">
+                <h:panelGrid columns="2">
+
+                    <h:outputText value="#{msg.carModelLabel}" />
+                    <h:outputText id="modelOutput" value="#{carBean.car.model}" />
+
+                    <h:outputText value="#{msg.carHorsepowerLabel}" />
+                    <h:outputText id="horsepowerOutput" value="#{carBean.car.horsepower}" />
+
+                    <h:outputText value="#{msg.carLicensePlatesLabel}" />
+                    <h:outputText id="licensePlatesOutput"
+                                  value="#{carBean.car.licensePlates}" />
+
+                    <h:outputText value="#{msg.carOwnersAmountLabel}" />
+                    <h:outputText id="ownersAmountOutput"
+                                  value="#{carBean.car.ownersAmount}" />
+
+                    <h:outputText value="#{msg.carProductionDateLabel}" />
+                    <h:outputText id="productionDateOutput" value="#{carBean.car.productionDate}">
+                        <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                    </h:outputText>
+
+                </h:panelGrid>
+            </a4j:outputPanel>
+
+            <br/>
+            <h:commandButton value="#{msg.personFormOKButton}" class="btn btn-success"
                              action="#{carBean.addCar}" />
 
             <h:panelGrid>

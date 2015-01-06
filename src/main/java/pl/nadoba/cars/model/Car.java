@@ -20,6 +20,7 @@ public class Car {
         return uuid;
     }
 
+    // JSR-303 validation annotations
     @Size(min = 6, max = 40)
     public String getModel() {
         return model;

@@ -14,10 +14,13 @@
                 <h:inputText id="model" value="#{carBean.car.model}" />
 
                 <h:outputText value="#{msg.carHorsepowerLabel}" />
-                <h:inputText id="horsepower" value="#{carBean.car.horsepower}" />
+                <h:inputText id="horsepower" value="#{carBean.car.horsepower}" >
+                    <f:validator validatorId="horsepowerValidator" />
+                </h:inputText>
 
                 <h:outputText value="#{msg.carLicensePlatesLabel}" />
-                <h:inputText id="licensePlates" value="#{carBean.car.licensePlates}" />
+                <h:inputText id="licensePlates" value="#{carBean.car.licensePlates}"
+                             validator="#{carBean.uniqueLicensePlates}"/>
 
                 <h:outputText value="#{msg.carOwnersAmountLabel}" />
                 <rich:inputNumberSpinner id="ownersAmount" value="#{carBean.car.ownersAmount}">

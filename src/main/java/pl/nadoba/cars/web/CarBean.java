@@ -1,10 +1,15 @@
 package pl.nadoba.cars.web;
 
+import com.example.jsfdemo.domain.Person;
 import pl.nadoba.cars.model.Car;
 import pl.nadoba.cars.service.StorageService;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -37,7 +42,7 @@ public class CarBean implements Serializable {
         this.cars = cars;
     }
 
-    // Actions
+
     public String addCar() {
         storageService.addCar(car);
         return "showCars";
@@ -48,4 +53,19 @@ public class CarBean implements Serializable {
         return null;
     }
 
+
+    public void uniqueLicensePlates(FacesContext context, UIComponent component,
+                          Object value) {
+
+        String licensePlates = (String) value;
+
+        for (Car car : storageService.getAllCars()) {
+            if (car.getLicensePlates().equalsIgnoreCase(licensePlates)) {
+                FacesMessage message = new FacesMessage(
+                        "Car with these license plates already exists in database");
+                message.setSeverity(FacesMessage.SEVERITY_ERROR);
+                throw new ValidatorException(message);
+            }
+        }
+    }
 }

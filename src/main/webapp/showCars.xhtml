@@ -37,7 +37,9 @@
 
                 <h:column>
                     <f:facet name="header">#{msg.carProductionDateLabel}</f:facet>
-                    #{item.productionDate}
+                    <h:outputText value="#{item.productionDate}">
+                        <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
+                    </h:outputText>
                 </h:column>
 
                 <h:column>

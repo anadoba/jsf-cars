@@ -28,7 +28,7 @@ public class Car {
         this.model = model;
     }
 
-    @Min(1)
+    // faces validator
     public int getHorsepower() {
         return horsepower;
     }

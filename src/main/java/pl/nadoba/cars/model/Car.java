@@ -15,6 +15,7 @@ public class Car {
     private Date productionDate = new Date();
     private String licensePlates = "";
     private int ownersAmount = 0;
+    private String pin = "";
 
     public UUID getUuid() {
         return uuid;
@@ -53,11 +54,17 @@ public class Car {
         this.licensePlates = licensePlates;
     }
 
-
     public int getOwnersAmount() {
         return ownersAmount;
     }
     public void setOwnersAmount(int ownersAmount) {
         this.ownersAmount = ownersAmount;
+    }
+
+    public String getPin() {
+        return pin;
+    }
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 }

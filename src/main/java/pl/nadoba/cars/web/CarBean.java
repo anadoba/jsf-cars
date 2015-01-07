@@ -7,12 +7,17 @@ import pl.nadoba.cars.service.StorageService;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIForm;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.faces.model.ListDataModel;
 import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 @SessionScoped
 @Named("carBean")
@@ -65,6 +70,29 @@ public class CarBean implements Serializable {
                         "Car with these license plates already exists in database");
                 message.setSeverity(FacesMessage.SEVERITY_ERROR);
                 throw new ValidatorException(message);
+            }
+        }
+    }
+
+    public void validatePin(ComponentSystemEvent event) {
+        UIForm form = (UIForm) event.getComponent();
+        UIInput productionDate = (UIInput) form.findComponent("calendar");
+        UIInput pin = (UIInput) form.findComponent("pin");
+
+        if (productionDate.getValue() != null && pin.getValue() != null)
+        {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(((Date) productionDate.getValue()));
+
+            String lastDigitsOfYear = ((Integer) calendar.get(Calendar.YEAR))
+                    .toString().substring(2,4);
+            String firstDigitsOfPin = pin.getValue().toString().substring(0,2);
+
+            if(!lastDigitsOfYear.equals(firstDigitsOfPin)){
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(form.getClientId(), new FacesMessage(
+                        "PIN doesn't match production date"));
+                context.renderResponse();
             }
         }
     }

@@ -8,6 +8,7 @@
                 template="/templates/default.xhtml">
     <ui:define name="content">
         <h:form id="carForm">
+            <f:event type="postValidate" listener="#{carBean.validatePin}"/>
             <h:panelGrid columns="2">
 
                 <h:outputText value="#{msg.carModelLabel}" />
@@ -40,6 +41,11 @@
                     <a4j:ajax render="productionDate" execute="@this" />
                 </rich:calendar>
 
+                <h:outputText value="#{msg.carPinLabel}" />
+                <h:inputText id="pin" value="#{carBean.car.pin}">
+                    <a4j:ajax render="pin" execute="@this" />
+                </h:inputText>
+
             </h:panelGrid>
 
             <br/>
@@ -69,12 +75,16 @@
                         <f:convertDateTime type="date" pattern="dd-MM-yyyy"/>
                     </h:outputText>
 
+                    <h:outputText value="#{msg.carPinLabel}" />
+                    <h:outputText id="pinOutput"
+                                  value="#{carBean.car.pin}" />
                 </h:panelGrid>
             </a4j:outputPanel>
 
             <br/>
             <h:commandButton value="#{msg.personFormOKButton}" class="btn btn-success"
                              action="#{carBean.addCar}" />
+            <br/>
             <br/>
 
             <h:panelGrid>

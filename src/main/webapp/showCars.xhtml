@@ -43,6 +43,11 @@
                 </h:column>
 
                 <h:column>
+                    <f:facet name="header">#{msg.carPinLabel}</f:facet>
+                    #{item.pin}
+                </h:column>
+
+                <h:column>
                     <f:facet name="header">#{msg.action}</f:facet>
                     <h:commandLink class="button btn-danger" value="#{msg.actionDelete}" action="#{carBean.deleteCar}"/>
                 </h:column>

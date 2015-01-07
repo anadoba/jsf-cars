@@ -38,6 +38,7 @@ public class StorageService {
         carToAdd.setLicensePlates(car.getLicensePlates());
         carToAdd.setProductionDate(car.getProductionDate());
         carToAdd.setOwnersAmount(car.getOwnersAmount());
+        carToAdd.setPin(car.getPin());
 
         cars.add(carToAdd);
     }
